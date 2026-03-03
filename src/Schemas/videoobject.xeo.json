@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "title": "Nom",
+            "description": "Nom de la vidéo"
+        },
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Description",
+            "description": "Description de la vidéo"
+        },
+        "contentUrl": {
+            "type": "string",
+            "title": "URL",
+            "description": "URL de la vidéo"
+        }
+    },
+    "required": ["name", "contentUrl"]
+}

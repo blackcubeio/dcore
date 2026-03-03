@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string",
+            "title": "Titre",
+            "description": "Titre de l'encart"
+        },
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Contenu",
+            "description": "Contenu de l'encart"
+        },
+        "level": {
+            "type": "string",
+            "format": "dropdownlist",
+            "multiple": false,
+            "items": [
+                {"value": "info", "title": "Information"},
+                {"value": "warning", "title": "Avertissement"},
+                {"value": "success", "title": "Succès"},
+                {"value": "danger", "title": "Danger"}
+            ],
+            "title": "Niveau",
+            "description": "Type d'encart"
+        }
+    },
+    "required": ["description"]
+}

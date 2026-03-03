@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "image": {
+            "type": "string",
+            "format": "file",
+            "fileType": "png,jpg,svg",
+            "title": "Image",
+            "description": "Fichier image"
+        },
+        "alt": {
+            "type": "string",
+            "title": "Alternate",
+            "description": "Attribut alt de l'image"
+        },
+        "description": {
+            "type": "string",
+            "title": "Légende",
+            "description": "Légende de l'image"
+        },
+        "label": {
+            "type": "string",
+            "title": "Lien",
+            "description": "Texte du lien"
+        },
+        "route": {
+            "type": "string",
+            "title": "Cible",
+            "description": "Élément cible du lien (route interne)"
+        },
+        "url": {
+            "type": "string",
+            "title": "Cible (URL)",
+            "description": "Lien brut (utilisé si pas de route)"
+        },
+        "group": {
+            "type": "string",
+            "format": "checkbox",
+            "title": "Grouper",
+            "description": "Grouper avec les images adjacentes"
+        }
+    },
+    "required": ["image", "alt"]
+}

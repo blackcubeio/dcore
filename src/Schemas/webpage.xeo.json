@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "title": "Nom",
+            "description": "Nom de la page"
+        },
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Description",
+            "description": "Description de la page"
+        },
+        "image": {
+            "type": "string",
+            "format": "file",
+            "fileType": "png,jpg,svg",
+            "title": "Image",
+            "description": "Image principale"
+        }
+    },
+    "required": ["name"]
+}

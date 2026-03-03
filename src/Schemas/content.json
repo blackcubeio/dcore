@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Texte",
+            "description": "Contenu textuel"
+        },
+        "image": {
+            "type": "string",
+            "format": "file",
+            "fileType": "png,jpg,svg",
+            "title": "Image",
+            "description": "Image d'accompagnement"
+        },
+        "alt": {
+            "type": "string",
+            "title": "Alternate",
+            "description": "Attribut alt de l'image"
+        },
+        "position": {
+            "type": "string",
+            "format": "dropdownlist",
+            "multiple": false,
+            "items": [
+                {"value": "left", "title": "Gauche"},
+                {"value": "right", "title": "Droite"}
+            ],
+            "title": "Position",
+            "description": "Position de l'image"
+        }
+    },
+    "required": ["description"]
+}

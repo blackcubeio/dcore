@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "overline": {
+            "type": "string",
+            "title": "Surtitre",
+            "description": "Surtitre de la section"
+        },
+        "title": {
+            "type": "string",
+            "title": "Titre",
+            "description": "Titre du hero (h1)"
+        },
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Teasing",
+            "description": "Contenu de teasing"
+        },
+        "image": {
+            "type": "string",
+            "format": "file",
+            "fileType": "png,jpg,svg",
+            "title": "Image",
+            "description": "Image d'accroche"
+        },
+        "alt": {
+            "type": "string",
+            "title": "Alternate",
+            "description": "Attribut alt de l'image"
+        },
+        "label": {
+            "type": "string",
+            "title": "Bouton",
+            "description": "Libellé du bouton CTA"
+        },
+        "route": {
+            "type": "string",
+            "title": "Cible",
+            "description": "Élément cible du CTA (route interne)"
+        },
+        "url": {
+            "type": "string",
+            "title": "Cible (URL)",
+            "description": "Lien brut (utilisé si pas de route)"
+        }
+    },
+    "required": ["title", "description", "image", "alt"]
+}

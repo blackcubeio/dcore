@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "language": {
+            "type": "string",
+            "format": "dropdownlist",
+            "multiple": false,
+            "items": [
+                {"value": "php", "title": "PHP"},
+                {"value": "sql", "title": "SQL"},
+                {"value": "json", "title": "JSON"},
+                {"value": "typescript", "title": "Typescript"},
+                {"value": "html", "title": "HTML"},
+                {"value": "scss", "title": "SCSS"},
+                {"value": "javascript", "title": "Javascript"},
+                {"value": "css", "title": "CSS"},
+                {"value": "bash", "title": "Bash"},
+                {"value": "graphql", "title": "GraphQL"},
+                {"value": "yaml", "title": "YAML"},
+                {"value": "xml", "title": "XML"},
+                {"value": "markdown", "title": "Markdown"}
+            ],
+            "title": "Langage",
+            "description": "Langage pour la mise en forme"
+        },
+        "filename": {
+            "type": "string",
+            "title": "Nom",
+            "description": "Nom du fichier"
+        },
+        "code": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Code",
+            "description": "Bloc de code"
+        }
+    },
+    "required": ["language", "code"]
+}

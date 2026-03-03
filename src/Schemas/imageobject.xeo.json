@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "title": "Nom",
+            "description": "Nom de l'image"
+        },
+        "caption": {
+            "type": "string",
+            "title": "Légende",
+            "description": "Légende de l'image"
+        },
+        "contentUrl": {
+            "type": "string",
+            "format": "file",
+            "fileType": "png,jpg,svg",
+            "title": "URL",
+            "description": "URL du fichier image"
+        }
+    },
+    "required": ["name", "contentUrl"]
+}
