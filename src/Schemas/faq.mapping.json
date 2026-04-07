@@ -1,0 +1,6 @@
+{
+    "mapping": {
+        "title": "name",
+        "description": "acceptedAnswer"
+    }
+}

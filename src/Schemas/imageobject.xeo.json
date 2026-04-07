@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Image name"
+        },
+        "caption": {
+            "type": "string",
+            "title": "Caption",
+            "description": "Image caption"
+        },
+        "contentUrl": {
+            "type": "string",
+            "format": "file",
+            "fileType": "png,jpg,svg",
+            "title": "URL",
+            "description": "Image file URL"
+        }
+    },
+    "required": ["name", "contentUrl"]
+}

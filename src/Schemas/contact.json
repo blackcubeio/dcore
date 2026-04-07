@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Description",
+            "description": "Section description"
+        },
+        "successTitle": {
+            "type": "string",
+            "title": "Success title",
+            "description": "Success title (h2)"
+        },
+        "successDescription": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Success",
+            "description": "Success message"
+        }
+    },
+    "required": ["successTitle", "successDescription"]
+}

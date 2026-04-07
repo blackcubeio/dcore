@@ -1,0 +1,4 @@
+actor: ModelsTester
+modules:
+    enabled:
+        - Asserts

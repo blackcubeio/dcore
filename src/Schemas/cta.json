@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "CTA title"
+        },
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Description",
+            "description": "Accompanying text"
+        },
+        "label": {
+            "type": "string",
+            "title": "Button",
+            "description": "Button label"
+        },
+        "route": {
+            "type": "string",
+            "field": "routes",
+            "title": "Target",
+            "description": "Target element (internal route)"
+        },
+        "url": {
+            "type": "string",
+            "title": "Target (URL)",
+            "description": "Raw link (used if no route)"
+        }
+    },
+    "required": ["title", "label"]
+}

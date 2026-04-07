@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "inLanguage": {
+            "type": "string",
+            "pattern": "^[a-z]{2}(-[A-Z]{2})?$",
+            "maxLength": 5,
+            "title": "Primary language",
+            "description": "BCP 47 code: fr, fr-FR, en-US, de-DE…"
+        },
+        "hasSearchAction": {
+            "type": "boolean",
+            "format": "checkbox",
+            "title": "Enable Sitelinks Searchbox",
+            "description": "Google displays a search field directly in the results.",
+            "default": false
+        },
+        "searchTarget": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https?://.+\\{search_term_string\\}.*$",
+            "maxLength": 500,
+            "title": "Search URL",
+            "description": "URL template with {search_term_string}. E.g.: https://www.example.com/search?q={search_term_string}"
+        }
+    },
+    "required": []
+}

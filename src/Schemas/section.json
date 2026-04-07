@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "level": {
+            "type": "string",
+            "format": "dropdownlist",
+            "multiple": false,
+            "items": [
+                {"value": 2, "title": "H2"},
+                {"value": 3, "title": "H3"},
+                {"value": 4, "title": "H4"},
+                {"value": 5, "title": "H5"},
+                {"value": 6, "title": "H6"}
+            ],
+            "title": "Level",
+            "description": "Heading level (h2-h6)"
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Section title"
+        },
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Introduction",
+            "description": "Section introduction text"
+        }
+    },
+    "required": ["level", "title"]
+}
