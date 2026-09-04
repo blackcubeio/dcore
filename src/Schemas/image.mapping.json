@@ -1,0 +1,7 @@
+{
+    "mapping": {
+        "alt": "name",
+        "description": "caption",
+        "image": "contentUrl"
+    }
+}

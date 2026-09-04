@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "level": {
+            "type": "string",
+            "format": "dropdownlist",
+            "multiple": false,
+            "items": [
+                {"value": "info", "title": "Information"},
+                {"value": "warning", "title": "Warning"},
+                {"value": "success", "title": "Success"},
+                {"value": "danger", "title": "Danger"}
+            ],
+            "title": "Level",
+            "description": "Callout type"
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Callout title"
+        },
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Content",
+            "description": "Callout content"
+        }
+    },
+    "required": ["description"]
+}

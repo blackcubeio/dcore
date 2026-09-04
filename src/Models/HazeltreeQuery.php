@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * HazeltreeQuery.php
+ *
+ * PHP Version 8.4
+ *
+ * @copyright 2010-2026 Blackcube - Philippe Gaultier
+ * @license https://www.blackcube.io/license
+ * @link https://www.blackcube.io
+ */
+
+namespace Blackcube\Dcore\Models;
+
+use Blackcube\ActiveRecord\BatchedEachQueryTrait;
+use Blackcube\ActiveRecord\Hazeltree\HazeltreeQueryInterface;
+use Blackcube\ActiveRecord\Hazeltree\BaseHazeltreeQueryTrait;
+
+/**
+ * Query with tree navigation support.
+ */
+class HazeltreeQuery extends ScopableQuery implements HazeltreeQueryInterface
+{
+    use BaseHazeltreeQueryTrait;
+}

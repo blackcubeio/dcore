@@ -1,0 +1,7 @@
+{
+    "mapping": {
+        "title": "name",
+        "description": "description",
+        "url": "contentUrl"
+    }
+}

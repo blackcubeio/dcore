@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "url": {
+            "type": "string",
+            "title": "URL",
+            "description": "Media URL (YouTube, Vimeo, Spotify, SoundCloud, etc.)"
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Media title"
+        },
+        "description": {
+            "type": "string",
+            "format": "wysiwyg",
+            "options": {
+                "theme": "snow",
+                "modules": {
+                    "toolbar": [["bold", "italic", "underline", "strike"], [{"list": "bullet"}], ["link"]]
+                },
+                "formats": ["bold", "italic", "link", "underline", "strike", "list"]
+            },
+            "title": "Description",
+            "description": "Media description"
+        }
+    },
+    "required": ["url"]
+}
