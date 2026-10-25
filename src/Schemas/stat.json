@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "group": {
+            "type": "string",
+            "format": "checkbox",
+            "title": "Group",
+            "description": "Group with adjacent stats"
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Stat title"
+        },
+        "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "Stat description"
+        }
+    },
+    "required": ["title", "description"]
+}

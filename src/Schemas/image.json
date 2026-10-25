@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "group": {
+            "type": "string",
+            "format": "checkbox",
+            "title": "Group",
+            "description": "Group with adjacent images"
+        },
+        "image": {
+            "type": "string",
+            "format": "file",
+            "fileType": "png,jpg,svg",
+            "title": "Image",
+            "description": "Image file"
+        },
+        "alt": {
+            "type": "string",
+            "title": "Alternate",
+            "description": "Image alt attribute"
+        },
+        "description": {
+            "type": "string",
+            "title": "Caption",
+            "description": "Image caption"
+        },
+        "label": {
+            "type": "string",
+            "title": "Link",
+            "description": "Link text"
+        },
+        "route": {
+            "type": "string",
+            "field": "routes",
+            "title": "Target",
+            "description": "Link target element (internal route)"
+        },
+        "url": {
+            "type": "string",
+            "title": "Target (URL)",
+            "description": "Raw link (used if no route)"
+        }
+    },
+    "required": ["image", "alt"]
+}

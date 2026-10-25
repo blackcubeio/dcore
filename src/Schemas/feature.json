@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "group": {
+            "type": "string",
+            "format": "checkbox",
+            "title": "Group",
+            "description": "Group with adjacent features"
+        },
+        "icon": {
+            "type": "string",
+            "format": "file",
+            "fileType": "svg",
+            "title": "Icon",
+            "description": "Icon file"
+        },
+        "alt": {
+            "type": "string",
+            "title": "Alternate",
+            "description": "Icon alt attribute"
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Feature title"
+        },
+        "description": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Description",
+            "description": "Feature description"
+        },
+        "route": {
+            "type": "string",
+            "field": "routes",
+            "title": "Target",
+            "description": "Feature description (internal route)"
+        },
+        "url": {
+            "type": "string",
+            "title": "Target (URL)",
+            "description": "Feature description link (used if no route)"
+        }
+    },
+    "required": ["icon", "alt", "title", "description"]
+}
