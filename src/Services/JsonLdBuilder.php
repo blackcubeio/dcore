@@ -52,6 +52,7 @@ class JsonLdBuilder implements JsonLdBuilderInterface
             $language = ($element instanceof Content) ? $element->getLanguageId() : null;
 
             $orgData = $this->loadGlobalXeo(JsonLdKind::Organization, $hostId);
+            $orgName = $this->getGlobalXeo(JsonLdKind::Organization, $hostId)?->getName();
             $webSiteData = $this->loadGlobalXeo(JsonLdKind::WebSite, $hostId);
 
             $xeoBlocs = $this->loadXeoBlocs($xeoModel);
@@ -59,7 +60,7 @@ class JsonLdBuilder implements JsonLdBuilderInterface
             $graph = [];
 
             if ($orgData !== null) {
-                $graph[] = $this->buildOrganization($orgData);
+                $graph[] = $this->buildOrganization($orgData, $orgName);
             }
 
             if ($webSiteData !== null) {
@@ -108,6 +109,14 @@ class JsonLdBuilder implements JsonLdBuilderInterface
      */
     private function loadGlobalXeo(JsonLdKind $kind, int $hostId): ?array
     {
+        return $this->getGlobalXeo($kind, $hostId)?->getElasticValues();
+    }
+
+    /**
+     * GlobalXeo entry of a kind for the host, with fallback to hostId=1.
+     */
+    private function getGlobalXeo(JsonLdKind $kind, int $hostId): ?GlobalXeo
+    {
         if (self::$globalXeosCache === null) {
             self::$globalXeosCache = [];
             $globalXeosQuery = GlobalXeo::query();
@@ -116,8 +125,7 @@ class JsonLdBuilder implements JsonLdBuilderInterface
                 self::$globalXeosCache[$globalXeo->getKind()][$globalXeo->getHostId()] = $globalXeo;
             }
         }
-        $globalXeo = self::$globalXeosCache[$kind->value][$hostId] ?? self::$globalXeosCache[$kind->value][1] ?? null;
-        return $globalXeo?->getElasticValues();
+        return self::$globalXeosCache[$kind->value][$hostId] ?? self::$globalXeosCache[$kind->value][1] ?? null;
     }
 
     /**
@@ -166,11 +174,16 @@ class JsonLdBuilder implements JsonLdBuilderInterface
         return $imageUrl;
     }
 
-    private function buildOrganization(array $data): array
+    private function buildOrganization(array $data, ?string $name): array
     {
         $org = [
             '@type' => $data['organizationType'] ?? 'Organization',
         ];
+
+        if (empty($name) === false) {
+            $org['name'] = $name;
+        }
+        $org['url'] = $this->baseUrl;
 
         $logo = $this->imageUrl($data['logo'] ?? null);
         if ($logo !== null) {
