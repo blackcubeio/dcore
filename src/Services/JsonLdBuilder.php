@@ -54,6 +54,7 @@ class JsonLdBuilder implements JsonLdBuilderInterface
             $orgData = $this->loadGlobalXeo(JsonLdKind::Organization, $hostId);
             $orgName = $this->getGlobalXeo(JsonLdKind::Organization, $hostId)?->getName();
             $webSiteData = $this->loadGlobalXeo(JsonLdKind::WebSite, $hostId);
+            $webSiteName = $this->getGlobalXeo(JsonLdKind::WebSite, $hostId)?->getName();
 
             $xeoBlocs = $this->loadXeoBlocs($xeoModel);
 
@@ -64,7 +65,7 @@ class JsonLdBuilder implements JsonLdBuilderInterface
             }
 
             if ($webSiteData !== null) {
-                $graph[] = $this->buildWebSite($webSiteData, $hostModel, $language);
+                $graph[] = $this->buildWebSite($webSiteData, $webSiteName, $hostModel, $language);
             }
 
             $authors = [];
@@ -254,16 +255,22 @@ class JsonLdBuilder implements JsonLdBuilderInterface
         return $org;
     }
 
-    private function buildWebSite(array $data, ?Host $hostModel, ?string $language): array
+    /**
+     * The name of the site is the label of the WebSite entry, nowhere else;
+     * its url is the base URL of the host.
+     */
+    private function buildWebSite(array $data, ?string $name, ?Host $hostModel, ?string $language): array
     {
         $ws = [
             '@type' => 'WebSite',
         ];
 
+        if (empty($name) === false) {
+            $ws['name'] = $name;
+        }
+        $ws['url'] = $this->baseUrl;
+
         if ($hostModel !== null) {
-            if ($hostModel->getSiteName() !== null) {
-                $ws['name'] = $hostModel->getSiteName();
-            }
             if ($hostModel->getSiteAlternateName() !== null) {
                 $ws['alternateName'] = $hostModel->getSiteAlternateName();
             }
