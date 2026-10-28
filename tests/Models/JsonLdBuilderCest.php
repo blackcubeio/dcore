@@ -19,7 +19,7 @@ use Blackcube\Dcore\Tests\Support\DatabaseCestTrait;
 use Blackcube\Dcore\Tests\Support\ModelsTester;
 
 /**
- * Tests for JsonLdBuilder — global Organization node.
+ * Tests for JsonLdBuilder — global Organization and WebSite nodes.
  *
  * @copyright 2010-2026 Blackcube - Philippe Gaultier
  * @license https://www.blackcube.io/license
@@ -29,9 +29,14 @@ class JsonLdBuilderCest
 {
     use DatabaseCestTrait;
 
-    public function testOrganizationCarriesNameAndUrl(ModelsTester $I): void
+    /**
+     * The builder reads the global entries once per process: both entries are
+     * written before the first build, and checked in one test.
+     */
+    public function testOrganizationAndWebSiteCarryNameAndUrl(ModelsTester $I): void
     {
         $this->createOrganizationGlobalXeo();
+        $this->createWebSiteGlobalXeo();
         $slug = $this->createSlug();
         $this->createActiveXeo($slug->getId());
 
@@ -39,14 +44,34 @@ class JsonLdBuilderCest
 
         $I->assertNotEmpty($jsonLds);
         $organization = null;
+        $webSite = null;
         foreach ($jsonLds[0]['@graph'] as $node) {
             if ($node['@type'] === 'Organization') {
                 $organization = $node;
+            }
+            if ($node['@type'] === 'WebSite') {
+                $webSite = $node;
             }
         }
         $I->assertNotNull($organization);
         $I->assertSame('Blackcube', $organization['name']);
         $I->assertSame('https://example.test', $organization['url']);
+        $I->assertNotNull($webSite);
+        $I->assertSame('Blackcube', $webSite['name']);
+        $I->assertSame('https://example.test', $webSite['url']);
+    }
+
+    private function createWebSiteGlobalXeo(): void
+    {
+        $schema = ElasticSchema::query()->andWhere(['name' => 'WebSite'])->one();
+
+        $globalXeo = new GlobalXeo();
+        $globalXeo->setHostId(1);
+        $globalXeo->setName('Blackcube');
+        $globalXeo->setKind('WebSite');
+        $globalXeo->setElasticSchemaId($schema->getId());
+        $globalXeo->setActive(true);
+        $globalXeo->save();
     }
 
     private function createOrganizationGlobalXeo(): void
