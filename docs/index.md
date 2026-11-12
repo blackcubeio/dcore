@@ -79,6 +79,8 @@ Blackcube headless CMS package. Provides models, services and handlers to manage
 | `JsonLdBuilder` | JSON-LD structured data generation from Xeo + GlobalXeo. |
 | `FileService` | File management (`@bltmp/` → `@blfs/`). Bloc and entity file processing. |
 | `ElasticMdService` | Markdown export/import for Content and Tag. Public rendering via `renderMarkdown()`. |
+| `AddonService` | Registry of the add-ons: declared by the params, active when their row exists. Activation plays their migrations, deactivation reverts them. See [Add-ons and upgrades](addons.md). |
+| `DatabaseUpgrade` | Applies the upgrades the modules declare and records them in the `upgrades` table; behind the `upgrade` console command. |
 
 ## Helpers
 

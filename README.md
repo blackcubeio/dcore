@@ -122,12 +122,19 @@ Entities extend Models and override `query()` to automatically filter by publish
 | `HandlerDescriptor` | Path → SSR handler resolution. CMS routing entry point. |
 | `PreviewManager` | Reads preview state (active flag + date simulation) from session. |
 | `HazeltreeSlugGenerator` | Automatic slug generation based on tree position. |
+| `AddonService` | Registry of the add-ons: declared by their params, active when their row exists. Activation plays their migrations, deactivation reverts them. |
+| `DatabaseUpgrade` | Applies the upgrades the modules declare and records them; behind the `upgrade` console command. |
+
+## Add-ons and upgrades
+
+An add-on is a Composer package that declares itself in its params under `'blackcube/dcore' => ['addons' => [id => class]]`; dboard shows it and activates it, dcore plays its migrations and keeps the active ones in the `addons` table. A module declares its database upgrades under `'blackcube/dcore' => ['upgrades' => [class]]`; the `upgrade` command applies the pending ones before `migrate:up`. See [Add-ons and upgrades](docs/addons.md).
 
 ## Documentation
 
 Detailed documentation:
 
 - [API overview](docs/index.md)
+- [Add-ons and upgrades](docs/addons.md)
 
 ## License
 

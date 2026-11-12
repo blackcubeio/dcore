@@ -12,6 +12,8 @@ use Blackcube\Dcore\Interfaces\JsonLdBuilderInterface;
 use Blackcube\Dcore\Interfaces\PreviewContextInterface;
 use Blackcube\Dcore\Interfaces\PreviewManagerInterface;
 use Blackcube\Dcore\Interfaces\SlugGeneratorInterface;
+use Blackcube\Dcore\Services\AddonService;
+use Blackcube\Dcore\Services\DatabaseUpgrade;
 use Blackcube\Dcore\Services\HazeltreeSlugGenerator;
 use Blackcube\Dcore\Services\JsonLdBuilder;
 use Blackcube\Dcore\Services\PreviewContext;
@@ -24,4 +26,16 @@ return [
     PreviewManagerInterface::class => PreviewManager::class,
     PreviewContextInterface::class => PreviewContext::class,
     JsonLdBuilderInterface::class => JsonLdBuilder::class,
+    AddonService::class => [
+        'class' => AddonService::class,
+        '__construct()' => [
+            'addons' => $params['blackcube/dcore']['addons'] ?? [],
+        ],
+    ],
+    DatabaseUpgrade::class => [
+        'class' => DatabaseUpgrade::class,
+        '__construct()' => [
+            'upgrades' => $params['blackcube/dcore']['upgrades'] ?? [],
+        ],
+    ],
 ];
