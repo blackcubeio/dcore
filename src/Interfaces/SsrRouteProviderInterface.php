@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Blackcube\Dcore\Interfaces;
 
 /**
- * Provides the SSR routes available to the CMS: their names, and the handler behind a route.
+ * Provides the SSR routes available to the CMS: their names, and the handler behind a route or a status code.
  *
  * @copyright 2010-2026 Blackcube - Philippe Gaultier
  * @license https://www.blackcube.io/license
@@ -30,6 +30,13 @@ interface SsrRouteProviderInterface
      * @return array{class: string, mode: string, method: ?string, expects: array}|null
      */
     public function getHandlerInfo(string $route): ?array;
+
+    /**
+     * Get error handler info for a status code.
+     *
+     * @return array{class: string, mode: string, method: ?string, expects: array, route: string}|null
+     */
+    public function getErrorHandlerInfo(int $statusCode): ?array;
 
     /**
      * Get error handler info by route name.
