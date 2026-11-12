@@ -11,6 +11,9 @@ declare(strict_types=1);
 return [
     'config-plugin' => [
         'params' => 'common/params.php',
+        'params-console' => [
+            'console/params.php',
+        ],
         'di' => 'common/di.php',
         'bootstrap' => 'common/bootstrap.php',
     ],

@@ -59,6 +59,7 @@ class MigrationsCest
         'contents_authors',
         'tags_authors',
         'llmMenus',
+        'addons',
     ];
 
     private ConnectionInterface $db;
@@ -93,11 +94,11 @@ class MigrationsCest
         }
     }
 
-    public function testDiscoveryFinds25Migrations(MigrationTester $I): void
+    public function testDiscoveryFinds26Migrations(MigrationTester $I): void
     {
         $migrations = $this->service->getNewMigrations();
 
-        $I->assertCount(25, $migrations, 'Should discover 25 migrations');
+        $I->assertCount(26, $migrations, 'Should discover 26 migrations');
     }
 
     public function testAllMigrationsUp(MigrationTester $I): void
