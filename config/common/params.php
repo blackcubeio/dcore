@@ -8,4 +8,11 @@ declare(strict_types=1);
  * @link https://www.blackcube.io
  */
 
-return [];
+return [
+    'blackcube/dcore' => [
+        // id => class of the available add-ons; each add-on adds its own entry in its params.
+        'addons' => [],
+        // Upgrade classes; each module adds its own in its params, `upgrade` applies the pending ones.
+        'upgrades' => [],
+    ],
+];
